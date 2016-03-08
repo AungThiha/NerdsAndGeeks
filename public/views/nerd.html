@@ -1,0 +1,62 @@
+<!-- public/views/nerd.html -->
+
+<div class="jumbotron text-center">
+    <h1>Nerds and Proud</h1>
+
+    <p>{{ tagline }}</p>
+</div>
+
+<div class="container list">
+
+<div class="row new-container">
+	<div class="col-md-3">
+		<h4 style="color: #999;">Add new nerd</h4>
+	</div>
+	<div class="col-md-9">
+		<form name="nerdForm" ng-submit="nerdForm.$valid && addNerd(nerd)" novalidate>
+	
+		<fieldset class="form-group">
+			<input id="nerd-name" type="text" class="form-control" placeholder="Name" title="Name" ng-model="nerd.name" ng-click="slideDown()" required />
+		</fieldset>
+
+		<div class="slideToggle" style="display: none;">
+			<fieldset class="form-group">
+			<input type="number" class="form-control" placeholder="Age" title="Age" ng-model="nerd.age" required />
+			</fieldset>
+			<fieldset class="form-group">
+				<textarea class="form-control" placeholder="Address" title="Address" ng-model="nerd.address"></textarea>
+			</fieldset>
+
+			<fieldset class="form-group">
+				<textarea class="form-control" placeholder="Biography" title="Biography" ng-model="nerd.bio"></textarea>
+			</fieldset>
+			<fieldset class="form-group pull-right" style="padding-right: 12px">
+				<input class="btn btn-primary" value="Submit" type="submit" style="margin-right: 12px" />
+				<a href="#" ng-model="nerd" ng-click="clearForm(this)">Cancel</a>
+			</fieldset>
+		</div>
+		<!-- <div>reviewForm is {{reviewForm.$valid}}</div> -->
+	</form>
+	</div>
+</div>
+
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="nerd in nerds">
+  	<h1 style="padding-bottom: 0; margin-bottom: 0;">{{nerd.name}}</h1>
+  	<small style="padding-top: 0; margin-top: 0"><strong>created at: </strong>{{ nerd.createdAt | date:' HH:mma MMM d, yyyy'}}</small>
+	<p><strong>age: </strong>{{nerd.age}}</p>
+	<section ng-controller="PanelController as panelCtrl">
+		<ul class="nav nav-pills">
+			<li ng-class="{active:panelCtrl.isSelected(1)}"><a href ng-click="panelCtrl.selectTab(1)">Address</a></li>
+			<li ng-class="{active:panelCtrl.isSelected(2)}"><a href ng-click="panelCtrl.selectTab(2)">Biography</a></li>
+		</ul>
+		<p ng-show="panelCtrl.isSelected(1)">
+			{{nerd.address}}
+		</p>
+		<p ng-show="panelCtrl.isSelected(2)">{{nerd.bio}}</p>
+	</section>
+  </li>
+</ul>
+	
+</div>
+

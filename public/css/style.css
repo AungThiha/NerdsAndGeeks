@@ -1,0 +1,23 @@
+.container.list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.new-container {
+	border: 1px solid #e7e9eB;
+	background-color: #f9f9fa;
+	margin: 0px 0px 15px;
+	padding: 20px;
+}
+
+.ng-invalid.ng-dirty {
+	border-color: #FA787E;
+}
+
+.ng-valid.ng-dirty {
+	border-color: #78FA89;
+}
+
+.nav-pills {
+    margin-bottom: 30px;
+}
