@@ -34,6 +34,11 @@ module.exports = function(express){
             if (req.body.hasOwnProperty('address')) {
             	nerd.address = bleach.sanitize(req.body['address']);
             }
+
+            if (req.body.hasOwnProperty('bio')) {
+            	nerd.address = bleach.sanitize(req.body['bio']);
+            }
+
             Nerd(nerd).save(function(err, nerd){
                 if (err) {
                     res.status(500);
@@ -77,11 +82,20 @@ module.exports = function(express){
 		    		return res.json(isValidData);
 		    	}
 
+		    	if (!req.body.hasOwnProperty('address')) {
+	            	res.status(403);
+		    		return res.json({error: true, message: "Address is required"});
+	            }
+
+	            if (!req.body.hasOwnProperty('bio')) {
+            		res.status(403);
+		    		return res.json({error: true, message: "Biography is required"});
+            	}
+
 	            nerd.name = req.body.name;  // update the bears info
 	            nerd.age = req.body.age;
-	            if (req.body.hasOwnProperty('address')) {
-	            	nerd.address = bleach.sanitize(req.body['address']);
-	            }
+	            nerd.address = bleach.sanitize(req.body['address']);
+	            nerd.address = bleach.sanitize(req.body['bio']);
 
 	            // save the bear
 	            nerd.save(function(err, nerd) {
