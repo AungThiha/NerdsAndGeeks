@@ -36,7 +36,7 @@ module.exports = function(express){
             }
 
             if (req.body.hasOwnProperty('bio')) {
-            	nerd.address = bleach.sanitize(req.body['bio']);
+            	nerd.bio = bleach.sanitize(req.body['bio']);
             }
 
             Nerd(nerd).save(function(err, nerd){
@@ -95,7 +95,7 @@ module.exports = function(express){
 	            nerd.name = req.body.name;  // update the bears info
 	            nerd.age = req.body.age;
 	            nerd.address = bleach.sanitize(req.body['address']);
-	            nerd.address = bleach.sanitize(req.body['bio']);
+	            nerd.bio = bleach.sanitize(req.body['bio']);
 
 	            // save the bear
 	            nerd.save(function(err, nerd) {

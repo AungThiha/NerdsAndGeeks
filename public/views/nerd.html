@@ -50,9 +50,7 @@
 			<li ng-class="{active:panelCtrl.isSelected(1)}"><a href ng-click="panelCtrl.selectTab(1)">Address</a></li>
 			<li ng-class="{active:panelCtrl.isSelected(2)}"><a href ng-click="panelCtrl.selectTab(2)">Biography</a></li>
 		</ul>
-		<p ng-show="panelCtrl.isSelected(1)">
-			{{nerd.address}}
-		</p>
+		<p ng-show="panelCtrl.isSelected(1)">{{nerd.address}}</p>
 		<p ng-show="panelCtrl.isSelected(2)">{{nerd.bio}}</p>
 	</section>
   </li>
