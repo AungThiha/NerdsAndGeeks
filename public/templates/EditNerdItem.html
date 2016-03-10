@@ -1,0 +1,27 @@
+<div class="row form-container">
+	<h4 style="color: #999;">Edit {{nerd.name}}</h4>
+	
+	<form name="EditNerdForm" ng-submit="EditNerdForm.$valid && editNerd()" novalidate>
+	
+		<fieldset class="form-group">
+			<input id="nerd-name" type="text" class="form-control" placeholder="Name" title="Name" ng-model="nerd.editted.name" required />
+		</fieldset>
+		<fieldset class="form-group">
+		<input type="number" class="form-control" placeholder="Age" title="Age" ng-model="nerd.editted.age" required />
+		</fieldset>
+		<fieldset class="form-group">
+			<textarea class="form-control" placeholder="Address" title="Address" ng-model="nerd.editted.address"></textarea>
+		</fieldset>
+
+		<fieldset class="form-group">
+			<textarea class="form-control" placeholder="Biography" title="Biography" ng-model="nerd.editted.bio"></textarea>
+		</fieldset>
+		<fieldset class="form-group pull-right" style="padding-right: 12px">
+			<input class="btn btn-primary" value="Save" type="submit" style="margin-right: 12px" />
+			<a href="#" ng-click="cancelForm()">Cancel</a>
+		</fieldset>
+	
+		<!-- <div>reviewForm is {{reviewForm.$valid}}</div> -->
+	</form>
+	
+</div>

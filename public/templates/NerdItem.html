@@ -1,0 +1,15 @@
+<h1 style="padding-bottom: 0; margin-bottom: 0;">{{nerd.name}}</h1>
+<div class="pull-right">
+	<a href="#" ng-click="editMode(this)">Edit</a>
+	<a href="#">Delete</a>
+</div>
+<small style="padding-top: 0; margin-top: 0"><strong>created at: </strong>{{ nerd.createdAt | date:' HH:mma MMM d, yyyy'}}</small>
+<p><strong>age: </strong>{{nerd.age}}</p>
+<section ng-controller="PanelController as panelCtrl">
+<ul class="nav nav-pills">
+	<li ng-class="{active:panelCtrl.isSelected(1)}"><a href ng-click="panelCtrl.selectTab(1)">Address</a></li>
+	<li ng-class="{active:panelCtrl.isSelected(2)}"><a href ng-click="panelCtrl.selectTab(2)">Biography</a></li>
+</ul>
+<p ng-show="panelCtrl.isSelected(1)">{{nerd.address}}</p>
+<p ng-show="panelCtrl.isSelected(2)">{{nerd.bio}}</p>
+</section>

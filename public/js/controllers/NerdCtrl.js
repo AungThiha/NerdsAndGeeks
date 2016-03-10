@@ -23,7 +23,7 @@ angular.module('NerdCtrl', []).controller('NerdController', [ 'Nerd', '$scope', 
 	    $(".slideToggle").slideDown("fast");
 	};
 
-	$scope.clearForm = function(e){
+	$scope.cancelForm = function(e){
 		$(".slideToggle").slideUp("fast");
 		e.nerd = {};
 		$scope.nerdForm.$setPristine();
