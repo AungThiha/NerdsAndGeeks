@@ -1,7 +1,7 @@
 <h1 style="padding-bottom: 0; margin-bottom: 0;">{{nerd.name}}</h1>
 <div class="pull-right">
-	<a href="#" ng-click="editMode(this)">Edit</a>
-	<a href="#">Delete</a>
+	<a href="#" ng-click="editMode()">Edit</a>
+	<a href="#" ng-click="delete(nerd)">Delete</a>
 </div>
 <small style="padding-top: 0; margin-top: 0"><strong>created at: </strong>{{ nerd.createdAt | date:' HH:mma MMM d, yyyy'}}</small>
 <p><strong>age: </strong>{{nerd.age}}</p>

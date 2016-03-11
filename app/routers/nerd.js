@@ -63,6 +63,15 @@ module.exports = function(express){
 	            res.json(nerd);
 			});
 		})
+		.delete(function(req, res){
+			Nerd.remove({ _id: req.params.nerd_id }, function(err) {
+				if (err) {
+					res.status(500);
+	                return res.json({error: true, message: err});
+			    }
+				res.json({message: "deleted"});
+			});
+		})
 		.put(function(req, res){
 			Nerd.findById(req.params.nerd_id, function(err, nerd) {
 
