@@ -1,0 +1,62 @@
+<!-- public/index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+
+    <title>Nerds and Geeks</title>
+
+    <meta name="description" content="Nerds and Geeks">
+    <meta name-"author" content="Aung Thiha">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="libs/angular-bootstrap/ui-bootstrap-csp.css"> -->
+
+    <!-- JS -->
+    <script src="libs/jquery/dist/jquery.min.js"></script>
+    <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="libs/angular/angular.min.js"></script>
+    <script src="libs/angular-route/angular-route.min.js"></script>
+    <script src="libs/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+    <!-- ANGULAR CUSTOM -->
+    <!-- <script src="src/js/controllers/MainCtrl.js"></script>
+    <script src="src/js/controllers/NerdCtrl.js"></script>
+    <script src="src/js/controllers/PanelCtrl.js"></script>
+    <script src="src/js/services/NerdService.js"></script>
+    
+    
+    <script src="src/js/directives/NerdItem.js"></script>
+    <script src="src/js/directives/EditNerdItem.js"></script>
+    <script src="src/js/templates.js"></script>
+    <script src="src/js/appRoutes.js"></script>
+    <script src="src/js/app.js"></script> -->
+    <script src="dist/js/app.min.js"></script>
+
+    <link rel="stylesheet" href="dist/css/style.min.css"> <!-- custom styles -->
+</head>
+<body ng-app="sampleApp" ng-controller="NerdController">
+<div class="container">
+
+    <!-- HEADER -->
+    <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">Nerds and Geeks</a>
+        </div>
+
+        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
+        <ul class="nav navbar-nav">
+            <li><a href="/nerds">Nerds</a></li>
+            <li><a href="/geeks">Geeks</a></li>
+        </ul>
+    </nav>
+
+    <!-- ANGULAR DYNAMIC CONTENT -->
+    <div ng-view></div>
+
+</div>
+</body>
+</html>

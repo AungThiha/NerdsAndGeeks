@@ -5,6 +5,16 @@ module.exports = function(grunt) {
 
     // JS TASKS ================================================================
     // check all js files for errors
+    ngtemplates: {
+        app: {
+            src: "public/views/*.html",
+            dest: "public/src/js/templates.js",
+            options: {
+                module: 'sampleApp'
+            }
+        }
+    },
+
     jshint: {
       all: ['public/src/js/**/*.js'] 
     },
@@ -37,6 +47,10 @@ module.exports = function(grunt) {
       js: {
         files: ['public/src/js/**/*.js'],
         tasks: ['jshint', 'uglify']
+      },
+      html: {
+        files: ['public/views/*.html'],
+        tasks: ['ngtemplates']
       }
     },
 
@@ -63,7 +77,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks('grunt-angular-templates');
 
-  grunt.registerTask('default', ['cssmin', 'jshint', 'uglify', 'concurrent']);
+  grunt.registerTask('default', ['ngtemplates', 'cssmin', 'jshint', 'uglify', 'concurrent']);
 
 };

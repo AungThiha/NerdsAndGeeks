@@ -1,7 +1,7 @@
 angular.module('EditNerdItem', []).directive('editNerdItem', ['Nerd', '$compile', function(Nerd, $compile) {
 	return {
       restrict: 'E', // E stands for element, A stands for attribute
-      templateUrl: 'templates/EditNerdItem.html',
+      templateUrl: 'views/EditNerdItem.html',
       link: function(scope, element, attrs){
 
             scope.cancelForm = function(){

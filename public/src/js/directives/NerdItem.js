@@ -1,7 +1,7 @@
 angular.module('NerdItem', ['ui.bootstrap']).directive('nerdItem', ['Nerd', '$compile', '$uibModal', function(Nerd, $compile, $uibModal) {
 	return {
       restrict: 'E', // E stands for element, A stands for attribute
-      templateUrl: 'templates/NerdItem.html',
+      templateUrl: 'views/NerdItem.html',
       link: function(scope, element, attrs){
 
             scope.editMode = function(){
@@ -18,9 +18,9 @@ angular.module('NerdItem', ['ui.bootstrap']).directive('nerdItem', ['Nerd', '$co
             scope.delete = function(nerd) {
                   // $("#deleteConfirmation").modal("show");
                   var modalInstance = $uibModal.open({
-                        templateUrl: 'templates/deleteConfirmationModal.html',
+                        templateUrl: 'views/deleteConfirmationModal.html',
                         size: 'sm',
-                        controller: function ($scope, $uibModalInstance, nerd){
+                        controller: ['$scope', '$uibModalInstance', 'nerd', function ($scope, $uibModalInstance, nerd){
                               $scope.ok = function () {
                                     $uibModalInstance.close(nerd);
                               };
@@ -28,7 +28,7 @@ angular.module('NerdItem', ['ui.bootstrap']).directive('nerdItem', ['Nerd', '$co
                               $scope.cancel = function () {
                                     $uibModalInstance.dismiss('cancel');
                               };
-                        },
+                        }],
                         resolve: {
                               nerd: function(){
                                     return nerd;

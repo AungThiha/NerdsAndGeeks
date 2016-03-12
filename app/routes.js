@@ -10,7 +10,7 @@ module.exports = function(app, express) {
     // frontend routes =========================================================
     // route to handle all angular requests
     app.get('*', function(req, res) {
-        res.sendFile(path.resolve('./public/views/index.html')); // load our public/index.html file
+        res.sendFile(path.resolve('./public/index.html')); // load our public/index.html file
     });
 
 };
