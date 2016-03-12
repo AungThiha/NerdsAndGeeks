@@ -16,5 +16,14 @@
     "method-override": "^2.3.5",
     "mongoose": "^4.4.6",
     "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-concurrent": "~2.2.1",
+    "grunt-contrib-jshint": "~1.0.0",
+    "grunt-contrib-uglify": "~1.0.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-cssmin": "~1.0.0",
+    "grunt-nodemon": "~0.4.1"
   }
 }
