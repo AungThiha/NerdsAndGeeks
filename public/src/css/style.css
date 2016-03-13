@@ -24,3 +24,12 @@
 .nav-pills {
     margin-bottom: 30px;
 }
+
+footer {
+	padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none !important;
+}
