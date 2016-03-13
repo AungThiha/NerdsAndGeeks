@@ -99,7 +99,13 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('public/views/geek.html',
-    ""
+    "<!-- public/views/home.html -->\n" +
+    "\n" +
+    "<div class=\"jumbotron text-center\">\n" +
+    "    <h1>Geek here to rescue you</h1>\n" +
+    "\n" +
+    "    <p>Oh yeah, I'm a geek</p>\n" +
+    "</div>"
   );
 
 
