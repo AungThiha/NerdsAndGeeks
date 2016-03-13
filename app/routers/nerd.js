@@ -28,7 +28,8 @@ module.exports = function(express){
 
             var nerd = {
             	name: req.body['name'],
-            	age: req.body['age']
+            	age: req.body['age'],
+				editable: true
             };
 
             if (req.body.hasOwnProperty('address')) {

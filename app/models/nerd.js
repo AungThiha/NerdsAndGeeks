@@ -10,7 +10,8 @@ var nerdSchema = new mongoose.Schema({
     name : {type : String, required: true},
     age: {type: Number, required: true},
     address: String,
-    bio: String
+    bio: String,
+    editable: Boolean
 },
 {
     timestamps: true

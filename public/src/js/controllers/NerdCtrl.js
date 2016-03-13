@@ -4,6 +4,8 @@ angular.module('NerdCtrl', []).controller('NerdController', [ 'Nerd', '$scope', 
     $scope.tagline = 'Nothing beats a pocket protector!';
 
     Nerd.get().success(function(nerds){
+        if(nerds.length > 0)
+            nerds[nerds.length - 1].editable = false;
         $scope.nerds = nerds;
     });
 

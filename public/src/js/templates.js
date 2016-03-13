@@ -42,11 +42,12 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
     "<p><strong>age: </strong>{{nerd.age}}</p>\n" +
     "<section ng-controller=\"PanelController as panelCtrl\">\n" +
     "<ul class=\"nav nav-pills\">\n" +
-    "	<li ng-class=\"{active:panelCtrl.isSelected(1)}\"><a href ng-click=\"panelCtrl.selectTab(1)\">Address</a></li>\n" +
-    "	<li ng-class=\"{active:panelCtrl.isSelected(2)}\"><a href ng-click=\"panelCtrl.selectTab(2)\">Biography</a></li>\n" +
+    "	<li ng-class=\"{active:panelCtrl.isSelected(1)}\"><a href ng-click=\"panelCtrl.selectTab(1)\">About</a></li>\n" +
+    "	<li ng-class=\"{active:panelCtrl.isSelected(2)}\"><a href ng-click=\"panelCtrl.selectTab(2)\">Address</a></li>\n" +
     "</ul>\n" +
-    "<p ng-show=\"panelCtrl.isSelected(1)\">{{nerd.address}}</p>\n" +
-    "<p ng-show=\"panelCtrl.isSelected(2)\">{{nerd.bio}}</p>\n" +
+    "	<p ng-show=\"panelCtrl.isSelected(1)\">{{nerd.bio}}</p>\n" +
+    "<p ng-show=\"panelCtrl.isSelected(2)\">{{nerd.address}}</p>\n" +
+    "\n" +
     "</section>"
   );
 

@@ -7,9 +7,10 @@
 <p><strong>age: </strong>{{nerd.age}}</p>
 <section ng-controller="PanelController as panelCtrl">
 <ul class="nav nav-pills">
-	<li ng-class="{active:panelCtrl.isSelected(1)}"><a href ng-click="panelCtrl.selectTab(1)">Address</a></li>
-	<li ng-class="{active:panelCtrl.isSelected(2)}"><a href ng-click="panelCtrl.selectTab(2)">Biography</a></li>
+	<li ng-class="{active:panelCtrl.isSelected(1)}"><a href ng-click="panelCtrl.selectTab(1)">About</a></li>
+	<li ng-class="{active:panelCtrl.isSelected(2)}"><a href ng-click="panelCtrl.selectTab(2)">Address</a></li>
 </ul>
-<p ng-show="panelCtrl.isSelected(1)">{{nerd.address}}</p>
-<p ng-show="panelCtrl.isSelected(2)">{{nerd.bio}}</p>
+	<p ng-show="panelCtrl.isSelected(1)">{{nerd.bio}}</p>
+<p ng-show="panelCtrl.isSelected(2)">{{nerd.address}}</p>
+
 </section>
