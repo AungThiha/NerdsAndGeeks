@@ -14,12 +14,12 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
     "		<input type=\"number\" class=\"form-control\" placeholder=\"Age\" title=\"Age\" ng-model=\"nerd.editted.age\" required />\n" +
     "		</fieldset>\n" +
     "		<fieldset class=\"form-group\">\n" +
+    "			<textarea class=\"form-control\" placeholder=\"About\" title=\"About\" ng-model=\"nerd.editted.bio\"></textarea>\n" +
+    "		</fieldset>\n" +
+    "		<fieldset class=\"form-group\">\n" +
     "			<textarea class=\"form-control\" placeholder=\"Address\" title=\"Address\" ng-model=\"nerd.editted.address\"></textarea>\n" +
     "		</fieldset>\n" +
     "\n" +
-    "		<fieldset class=\"form-group\">\n" +
-    "			<textarea class=\"form-control\" placeholder=\"Biography\" title=\"Biography\" ng-model=\"nerd.editted.bio\"></textarea>\n" +
-    "		</fieldset>\n" +
     "		<fieldset class=\"form-group pull-right\" style=\"padding-right: 12px\">\n" +
     "			<input class=\"btn btn-primary\" value=\"Save\" type=\"submit\" style=\"margin-right: 12px\" />\n" +
     "			<a href=\"#\" ng-click=\"cancelForm()\">Cancel</a>\n" +
@@ -110,13 +110,16 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
     "			<fieldset class=\"form-group\">\n" +
     "			<input type=\"number\" class=\"form-control\" placeholder=\"Age\" title=\"Age\" ng-model=\"nerd.age\" required />\n" +
     "			</fieldset>\n" +
+    "\n" +
+    "			<fieldset class=\"form-group\">\n" +
+    "				<textarea class=\"form-control\" placeholder=\"About\" title=\"About\" ng-model=\"nerd.bio\"></textarea>\n" +
+    "			</fieldset>\n" +
+    "\n" +
     "			<fieldset class=\"form-group\">\n" +
     "				<textarea class=\"form-control\" placeholder=\"Address\" title=\"Address\" ng-model=\"nerd.address\"></textarea>\n" +
     "			</fieldset>\n" +
     "\n" +
-    "			<fieldset class=\"form-group\">\n" +
-    "				<textarea class=\"form-control\" placeholder=\"Biography\" title=\"Biography\" ng-model=\"nerd.bio\"></textarea>\n" +
-    "			</fieldset>\n" +
+    "\n" +
     "			<fieldset class=\"form-group pull-right\" style=\"padding-right: 12px\">\n" +
     "				<input class=\"btn btn-primary\" value=\"Submit\" type=\"submit\" style=\"margin-right: 12px\" />\n" +
     "				<a href=\"#\" ng-model=\"nerd\" ng-click=\"cancelForm(this)\">Cancel</a>\n" +

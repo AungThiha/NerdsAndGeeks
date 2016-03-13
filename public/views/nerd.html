@@ -23,13 +23,16 @@
 			<fieldset class="form-group">
 			<input type="number" class="form-control" placeholder="Age" title="Age" ng-model="nerd.age" required />
 			</fieldset>
+
+			<fieldset class="form-group">
+				<textarea class="form-control" placeholder="About" title="About" ng-model="nerd.bio"></textarea>
+			</fieldset>
+
 			<fieldset class="form-group">
 				<textarea class="form-control" placeholder="Address" title="Address" ng-model="nerd.address"></textarea>
 			</fieldset>
 
-			<fieldset class="form-group">
-				<textarea class="form-control" placeholder="Biography" title="Biography" ng-model="nerd.bio"></textarea>
-			</fieldset>
+
 			<fieldset class="form-group pull-right" style="padding-right: 12px">
 				<input class="btn btn-primary" value="Submit" type="submit" style="margin-right: 12px" />
 				<a href="#" ng-model="nerd" ng-click="cancelForm(this)">Cancel</a>
