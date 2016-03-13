@@ -52,6 +52,36 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('public/views/about.html',
+    "\n" +
+    "<div class=\"jumbotron text-center\">\n" +
+    "    <h1>Aung Thiha</h1>\n" +
+    "\n" +
+    "    <p>A brief description about me</p>\n" +
+    "</div>\n" +
+    "\n" +
+    "<h3>Work Experience</h3>\n" +
+    "<p>I've been freelancing as an android developer for one and a half year before I worked at <a href=\"https://www.unikupid.com/\"></a>Unikupid for 6 months.</p>\n" +
+    "\n" +
+    "<h3>Education</h3>\n" +
+    "<p> I've got a Full Stack Web Developer Nanodegree from Udacity, Diploma in Computer Studies from NCC education and a few other certificates</p>\n" +
+    "\n" +
+    "<h3>Skills</h3>\n" +
+    "<p>Skills I have used for work are Java, C#, Windows Batch, Shell Script, C++, Git, Android Studio, Eclipse, NetBeans, Visual Studio, Sqlite3 and Microsoft Access.</p>\n" +
+    "<p>Skills I have learned are NodeJS, AngularJS, ExpressJS, GruntJS, Bower, Python, HTML5, CSS, JavaScript, Twitter Bootstrap, jQuery, Flask (Python), Heroku, Amazon Web Services, Google App Engine, PostgreSQL and MongoDB.</p>\n" +
+    "\n" +
+    "<h3>Current work</h3>\n" +
+    "<p>Currently, I'm leading a two member team and we partner with some freelance web developers for some projects.</p>\n" +
+    "\n" +
+    "\n" +
+    "<h3><p><a href=\"https://www.linkedin.com/in/aung-thiha-a4990b106\">Linkedin Profile</a></p></h3>\n" +
+    "\n" +
+    "\n" +
+    "\n" +
+    "\n"
+  );
+
+
   $templateCache.put('public/views/deleteConfirmationModal.html',
     "<!-- Modal -->\n" +
     "<div class=\"modal-header\">\n" +

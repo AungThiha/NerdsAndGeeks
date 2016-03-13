@@ -9,12 +9,18 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
             controller: 'MainController'
         })
 
+        .when('/about', {
+            templateUrl: 'views/about.html'
+        })
+
         // nerds page that will use the NerdController
         .when('/nerds', {
             templateUrl: 'views/nerd.html',
             controller: 'NerdController',
             controllerAs: 'nerdCtrl'
-        });
+        })
+
+        .otherwise({ redirectTo: '/about'});
 
     $locationProvider.html5Mode(true);
 

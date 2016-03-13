@@ -4,53 +4,47 @@ angular.module('NerdItem', ['ui.bootstrap']).directive('nerdItem', ['Nerd', '$co
       templateUrl: 'views/NerdItem.html',
       link: function(scope, element, attrs){
 
-            if(scope.nerd.hasOwnProperty('editable') && scope.nerd.editable){
-
-                  scope.editMode = function(){
-                        scope.nerd.editted = {
-                              name: scope.nerd.name,
-                              age: scope.nerd.age,
-                              address: scope.nerd.address,
-                              bio: scope.nerd.bio
-                        };
-                        var editNerdItem = $compile("<edit-nerd-item></edit-nerd-item>")(scope);
-                        element.html(editNerdItem);
+            scope.editMode = function(){
+                  scope.nerd.editted = {
+                        name: scope.nerd.name,
+                        age: scope.nerd.age,
+                        address: scope.nerd.address,
+                        bio: scope.nerd.bio
                   };
+                  var editNerdItem = $compile("<edit-nerd-item></edit-nerd-item>")(scope);
+                  element.html(editNerdItem);
+            };
 
-                  scope.delete = function(nerd) {
-                        // $("#deleteConfirmation").modal("show");
-                        var modalInstance = $uibModal.open({
-                              templateUrl: 'views/deleteConfirmationModal.html',
-                              size: 'sm',
-                              controller: ['$scope', '$uibModalInstance', 'nerd', function ($scope, $uibModalInstance, nerd){
-                                    $scope.ok = function () {
-                                          $uibModalInstance.close(nerd);
-                                    };
+            scope.delete = function(nerd) {
+                  // $("#deleteConfirmation").modal("show");
+                  var modalInstance = $uibModal.open({
+                        templateUrl: 'views/deleteConfirmationModal.html',
+                        size: 'sm',
+                        controller: ['$scope', '$uibModalInstance', 'nerd', function ($scope, $uibModalInstance, nerd){
+                              $scope.ok = function () {
+                                    $uibModalInstance.close(nerd);
+                              };
 
-                                    $scope.cancel = function () {
-                                          $uibModalInstance.dismiss('cancel');
-                                    };
-                              }],
-                              resolve: {
-                                    nerd: function(){
-                                          return nerd;
-                                    }
+                              $scope.cancel = function () {
+                                    $uibModalInstance.dismiss('cancel');
+                              };
+                        }],
+                        resolve: {
+                              nerd: function(){
+                                    return nerd;
                               }
-                        });
+                        }
+                  });
 
-                        modalInstance.result.then(function (nerd) {
-                              var index = scope.nerds.indexOf(nerd);
-                              Nerd.delete(nerd._id).success(function(){
-                                    scope.nerds.splice(index, 1);
-                              });
-                        }, function () {
-                              // console.log("after close");
+                  modalInstance.result.then(function (nerd) {
+                        var index = scope.nerds.indexOf(nerd);
+                        Nerd.delete(nerd._id).success(function(){
+                              scope.nerds.splice(index, 1);
                         });
-                  };
-
-            }else{
-                  element.children(".pull-right").remove();
-            }
+                  }, function () {
+                        // console.log("after close");
+                  });
+            };
 
       }
     };

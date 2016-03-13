@@ -43,16 +43,27 @@
 <div class="container">
 
     <!-- HEADER -->
-    <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Nerds and Geeks</a>
-        </div>
 
-        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-        <ul class="nav navbar-nav">
-            <li><a href="/nerds">Nerds</a></li>
-            <li><a href="/geeks">Geeks</a></li>
-        </ul>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="/nerds">Nerds</a></li>
+                    <li><a href="/geeks">Geeks</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/about">About me</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <!-- ANGULAR DYNAMIC CONTENT -->
@@ -61,7 +72,7 @@
 </div>
 <footer>
     <p><a href="https://github.com/AungThiha/NerdsAndGeeks" target="_blank"><i class="fa fa-github"></i> Github</a></p>
-    <p>Created by <a href="https://twitter.com/AungThiha3" target="_blank">Aung Thiha</a></p>
+    <p>Created by <a href="https://www.linkedin.com/in/aung-thiha-a4990b106" target="_blank">Aung Thiha</a></p>
 </footer>
 </body>
 </html>
