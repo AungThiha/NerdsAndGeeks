@@ -61,7 +61,7 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
     "</div>\n" +
     "\n" +
     "<h3>Work Experience</h3>\n" +
-    "<p>I've been freelancing as an android developer for one and a half year before I worked at <a href=\"https://www.unikupid.com/\"></a>Unikupid for 6 months.</p>\n" +
+    "<p>I've been freelancing as an android developer for one and a half year before I worked at <a href=\"https://www.unikupid.com/\">Unikupid</a> for 6 months.</p>\n" +
     "\n" +
     "<h3>Education</h3>\n" +
     "<p> I've got a Full Stack Web Developer Nanodegree from Udacity, Diploma in Computer Studies from NCC education and a few other certificates</p>\n" +
