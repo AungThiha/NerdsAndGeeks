@@ -10,12 +10,14 @@ angular.module('NerdCtrl', []).controller('NerdController', [ 'Nerd', '$scope', 
     $scope.nerd = {};
     $scope.addNerd = function(nerd){
         // code for add
-        Nerd.create(nerd).success(function(nerd){
-            $scope.nerds.unshift(nerd);	
-            $(".slideToggle").slideUp("fast");
-            $scope.nerd = {};
-            $scope.nerdForm.$setPristine();
-        });
+        if(nerd){
+            Nerd.create(nerd).success(function(nerd){
+                $scope.nerds.unshift(nerd);
+                $(".slideToggle").slideUp("fast");
+                $scope.nerd = {};
+                $scope.nerdForm.$setPristine();
+            });
+        }
     };
 
 
