@@ -8,6 +8,7 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
     "    <ul class=\"photo\">\n" +
     "        <li class=\"photo add\" ngf-select=\"uploadPhotos($files)\" multiple=\"multiple\"><p><i class=\"fa fa-plus\"></i></p></li>\n" +
     "        <li ng-repeat=\"photo in nerd.editted.photos\" class=\"photo\">\n" +
+    "            <i class=\"fa fa-times-circle-o close\" ng-click=\"deletePhoto(photo)\"></i>\n" +
     "            <img src=\"{{photo}}\" alt=\"\">\n" +
     "        </li>\n" +
     "    </ul>\n" +

@@ -41,7 +41,7 @@ ul.photo, ul.progress-list {
 ul.photo {
 	height: 180px;
 	width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 20px;
 	white-space: nowrap;
 	overflow-x: scroll;
@@ -51,7 +51,7 @@ ul.photo {
 li.photo
 {
 	position: relative;
-	margin: 8px 8px;
+	margin: 18px 8px 8px;
 	box-shadow: 2px 2px 4px #bbb;
 	border-top-right-radius: 4px;
 	width: 116px;
@@ -71,6 +71,14 @@ ul.photo .add:hover {
 .photo img {
 	width: 116px;
 	height: 158px;
+}
+
+li.photo .close {
+    position: absolute;
+    font-size: 18px;
+    top: -15px;
+    right: -11px;
+    z-index: 100;
 }
 
 .photo p {

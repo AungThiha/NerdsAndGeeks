@@ -1,48 +1,47 @@
-
 var Nerd = require('../models/nerd');
 var bleach = require('bleach');
 var multer = require('multer'),
     path = require('path');
 var fs = require('fs');
 
-module.exports = function(express){
-	var nerd = express.Router();
+module.exports = function (express) {
+    var nerd = express.Router();
 
-	nerd.route('/')
-		.get(function(req, res) {
+    nerd.route('/')
+        .get(function (req, res) {
 
-	        Nerd.find({$query:{}, $orderby: { createdAt: -1 }}, function(err, nerds) {
+            Nerd.find({$query: {}, $orderby: {createdAt: -1}}, function (err, nerds) {
 
-	            if (err)
-	                res.send(err);
+                if (err)
+                    res.send(err);
 
-	            res.json(nerds);
-	        });
+                res.json(nerds);
+            });
 
-	    })
-	    .post(function(req, res){
-	    	
-	    	var isValidData = Nerd.isValidData(req);
-	    	if (isValidData.hasOwnProperty('error')) {
-	    		res.status(isValidData.status);
-	    		return res.json(isValidData);
-	    	}
+        })
+        .post(function (req, res) {
+
+            var isValidData = Nerd.isValidData(req);
+            if (isValidData.hasOwnProperty('error')) {
+                res.status(isValidData.status);
+                return res.json(isValidData);
+            }
 
             var nerd = {
-            	name: req.body['name'],
-            	age: req.body['age'],
-				editable: true
+                name: req.body['name'],
+                age: req.body['age'],
+                editable: true
             };
 
             if (req.body.hasOwnProperty('address')) {
-            	nerd.address = bleach.sanitize(req.body['address']);
+                nerd.address = bleach.sanitize(req.body['address']);
             }
 
             if (req.body.hasOwnProperty('bio')) {
-            	nerd.bio = bleach.sanitize(req.body['bio']);
+                nerd.bio = bleach.sanitize(req.body['bio']);
             }
 
-            Nerd(nerd).save(function(err, nerd){
+            Nerd(nerd).save(function (err, nerd) {
                 if (err) {
                     res.status(500);
                     return res.json({error: true, message: err});
@@ -50,14 +49,14 @@ module.exports = function(express){
                 res.json(nerd);
             });
 
-	    });
+        });
 
 
-    nerd.param('nerd_id', function(req, res, next, nerd_id){
+    nerd.param('nerd_id', function (req, res, next, nerd_id) {
 
-        Nerd.findById(nerd_id, function(err, nerd) {
+        Nerd.findById(nerd_id, function (err, nerd) {
 
-            if (err){
+            if (err) {
                 res.status(500);
                 return res.json({error: true, message: err});
             }
@@ -73,30 +72,93 @@ module.exports = function(express){
 
     });
 
-    function deleteFile(file){
-        fs.unlink("." + file);
+    function deleteFile(file) {
+        var f = "." + file;
+        fs.stat(f, function(err, stat) {
+            if(!err) {
+                fs.unlink(f);
+            }
+        });
+
     }
 
-	nerd.route('/:nerd_id')
-		.get(function(req, res){
+    var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, path.resolve('./uploads/'));
+        },
+        filename: function (req, file, cb) {
+            file.edittedName = Date.now() + file.originalname;
+            cb(null, file.edittedName);
+        }
+    });
+    var upload = multer({storage: storage});
+
+
+    nerd.route('/:nerd_id/photos')
+        .get(function (req, res) {
+
+            res.json({_id: req.nerd._id, photos: req.nerd.photos});
+
+        })
+        .delete(function (req, res) {
+            console.log(req.body);
+            if (req.body.hasOwnProperty('photos') && req.body.photos) {
+
+                var photos = req.body.photos;
+
+                for (var i in photos) {
+                    deleteFile(photos[i]);
+                }
+
+                req.nerd.update({$pullAll: {photos: photos}}, function (err) {
+                    if (err) {
+                        res.status(500);
+                        return res.json({error: true, message: err});
+                    }
+                    res.json(photos);
+                });
+
+            } else {
+                res.status(400);
+                res.json({error: null, message: "add some photos for delete"});
+            }
+        })
+        .post(upload.array('photos'), function (req, res) {
+
+            var photos = req.files.map(function (f) {
+                return "/uploads/" + f.edittedName;
+            });
+            req.nerd.update({$push: {photos: {$each: photos, $position: 0}}}, {upsert: true}, function (err) {
+                if (err) {
+                    res.status(500);
+                    return res.json({error: true, message: err});
+                }
+                res.json(photos);
+            });
+
+        });
+
+
+    nerd.route('/:nerd_id')
+        .get(function (req, res) {
 
             res.json(req.nerd);
 
-		})
-		.delete(function(req, res){
-            for(var i in req.nerd.photos){
+        })
+        .delete(function (req, res) {
+            for (var i in req.nerd.photos) {
                 deleteFile(req.nerd.photos[i]);
             }
-			req.nerd.remove(function(err) {
-				if (err) {
-					res.status(500);
-	                return res.json({error: true, message: err});
-			    }
-				res.json({message: "deleted"});
-			});
+            req.nerd.remove(function (err) {
+                if (err) {
+                    res.status(500);
+                    return res.json({error: true, message: err});
+                }
+                res.json({message: "deleted"});
+            });
 
-		})
-		.put(function(req, res){
+        })
+        .put(function (req, res) {
 
             var isValidData = Nerd.isValidData(req);
             if (isValidData.hasOwnProperty('error')) {
@@ -117,7 +179,7 @@ module.exports = function(express){
             }
 
             // save the bear
-            req.nerd.save(function(err, nerd) {
+            req.nerd.save(function (err, nerd) {
                 if (err) {
                     res.status(500);
                     return res.json({error: true, message: err});
@@ -126,41 +188,8 @@ module.exports = function(express){
                 res.json(nerd);
             });
 
-		});
+        });
 
-
-	var storage = multer.diskStorage({
-		destination: function (req, file, cb) {
-			cb(null, path.resolve('./uploads/'));
-		},
-		filename: function (req, file, cb) {
-            file.edittedName = Date.now() + file.originalname;
-			cb(null, file.edittedName);
-		}
-	});
-	var upload = multer({ storage: storage });
-
-	nerd.route('/:nerd_id/photos')
-			.get(function(req, res){
-
-                res.json({_id: req.nerd._id, photos: req.nerd.photos});
-
-			})
-			.post(upload.array('photos'), function(req, res){
-
-                var photos = req.files.map(function(f){
-                    return "/uploads/" + f.edittedName;
-                });
-                req.nerd.update({$push: {photos: { $each: photos, $position: 0}}}, {upsert:true}, function(err){
-                    if (err) {
-                        res.status(500);
-                        return res.json({error: true, message: err});
-                    }
-                    res.json(photos);
-                });
-
-			});
-
-	return nerd;
+    return nerd;
 
 };

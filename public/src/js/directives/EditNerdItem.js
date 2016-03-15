@@ -56,6 +56,18 @@ angular.module('EditNerdItem', []).directive('editNerdItem', ['Nerd', '$compile'
                 }
             };
 
+            function deleteFile(photo){
+                var index = scope.nerd.photos.indexOf(photo);
+                scope.nerd.photos.splice(index, 1);
+                Nerd.deletePhotos(scope.nerd._id, {photos: [photo]}).success(function (data) {
+                    console.log(data);
+                });
+            }
+
+            scope.deletePhoto = function(photo){
+                deleteFile(photo);
+            };
+
         }
     };
 }]);

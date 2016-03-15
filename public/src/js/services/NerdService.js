@@ -19,8 +19,14 @@ angular.module('NerdService', []).factory('Nerd', ['$http', function($http) {
         },
 
         // call to DELETE a nerd
-        delete : function(id) {
-            return $http.delete('/api/nerds/' + id);
+        deletePhotos : function(nerdId, photos) {
+            var config = {
+                method: "DELETE",
+                url: '/api/nerds/' + nerdId + "/photos",
+                data: photos,
+                headers: {"Content-Type": "application/json;charset=utf-8"}
+            };
+            return $http(config);
         }
     };       
 
