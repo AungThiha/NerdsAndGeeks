@@ -145,7 +145,7 @@ module.exports = function(express){
                 var photos = req.files.map(function(f){
                     return "/uploads/" + f.edittedName;
                 });
-                req.nerd.update({$push: {photos: { $each: photos}}}, {upsert:true}, function(err){
+                req.nerd.update({$push: {photos: { $each: photos, $position: 0}}}, {upsert:true}, function(err){
                     if (err) {
                         res.status(500);
                         return res.json({error: true, message: err});

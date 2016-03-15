@@ -4,8 +4,19 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('public/views/EditNerdItem.html',
     "<div class=\"row form-container\">\n" +
     "	<h4 style=\"color: #999;\">Edit {{nerd.name}}</h4>\n" +
+    "\n" +
+    "    <ul class=\"photo\">\n" +
+    "        <li class=\"photo add\" ngf-select=\"uploadPhotos($files)\" multiple=\"multiple\"><p><i class=\"fa fa-plus\"></i></p></li>\n" +
+    "        <li ng-repeat=\"photo in nerd.editted.photos\" class=\"photo\">\n" +
+    "            <img src=\"{{photo}}\" alt=\"\">\n" +
+    "        </li>\n" +
+    "    </ul>\n" +
+    "\n" +
+    "    <ul class=\"progress-list\">\n" +
+    "    </ul>\n" +
     "	\n" +
     "	<form name=\"EditNerdForm\" ng-submit=\"EditNerdForm.$valid && editNerd()\" novalidate>\n" +
+    "\n" +
     "	\n" +
     "		<fieldset class=\"form-group\">\n" +
     "			<input id=\"nerd-name\" type=\"text\" class=\"form-control\" placeholder=\"Name\" title=\"Name\" ng-model=\"nerd.editted.name\" required />\n" +
@@ -39,6 +50,13 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
     "	<a href=\"#\" ng-click=\"delete(nerd)\">Delete</a>\n" +
     "</div>\n" +
     "<small style=\"padding-top: 0; margin-top: 0\"><strong>created at: </strong>{{ nerd.createdAt | date:' HH:mma MMM d, yyyy'}}</small>\n" +
+    "\n" +
+    "<ul class=\"photo\">\n" +
+    "	<li ng-repeat=\"photo in nerd.photos\" class=\"photo\">\n" +
+    "		<img src=\"{{photo}}\" alt=\"\">\n" +
+    "	</li>\n" +
+    "</ul>\n" +
+    "\n" +
     "<p><strong>age: </strong>{{nerd.age}}</p>\n" +
     "<section ng-controller=\"PanelController as panelCtrl\">\n" +
     "<ul class=\"nav nav-pills\">\n" +

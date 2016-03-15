@@ -1,7 +1,18 @@
 <div class="row form-container">
 	<h4 style="color: #999;">Edit {{nerd.name}}</h4>
+
+    <ul class="photo">
+        <li class="photo add" ngf-select="uploadPhotos($files)" multiple="multiple"><p><i class="fa fa-plus"></i></p></li>
+        <li ng-repeat="photo in nerd.editted.photos" class="photo">
+            <img src="{{photo}}" alt="">
+        </li>
+    </ul>
+
+    <ul class="progress-list">
+    </ul>
 	
 	<form name="EditNerdForm" ng-submit="EditNerdForm.$valid && editNerd()" novalidate>
+
 	
 		<fieldset class="form-group">
 			<input id="nerd-name" type="text" class="form-control" placeholder="Name" title="Name" ng-model="nerd.editted.name" required />

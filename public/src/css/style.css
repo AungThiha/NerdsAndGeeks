@@ -33,3 +33,65 @@ footer {
 footer a {
     text-decoration: none !important;
 }
+
+ul.photo, ul.progress-list {
+    padding: 0;
+}
+
+ul.photo {
+	height: 180px;
+	width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+	white-space: nowrap;
+	overflow-x: scroll;
+	overflow-y: hidden;
+}
+
+li.photo
+{
+	position: relative;
+	margin: 8px 8px;
+	box-shadow: 2px 2px 4px #bbb;
+	border-top-right-radius: 4px;
+	width: 116px;
+	height: 158px;
+	vertical-align: bottom;
+	background-position: top left;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: inline-block;
+}
+
+ul.photo .add:hover {
+    box-shadow: 3px 3px 5px #bbb;
+    cursor: pointer;
+}
+
+.photo img {
+	width: 116px;
+	height: 158px;
+}
+
+.photo p {
+    vertical-align: middle;
+    text-align: center;
+    line-height: 158px;
+    font-size: 20px;
+}
+
+.progress-list {
+    list-style-type: none;
+}
+
+.progress-bar {
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.progress-bar > .progress-type {
+    padding-left: 10px;
+}

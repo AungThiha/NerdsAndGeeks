@@ -9,7 +9,8 @@ angular.module('NerdItem', ['ui.bootstrap']).directive('nerdItem', ['Nerd', '$co
                         name: scope.nerd.name,
                         age: scope.nerd.age,
                         address: scope.nerd.address,
-                        bio: scope.nerd.bio
+                        bio: scope.nerd.bio,
+                        photos: scope.nerd.photos
                   };
                   var editNerdItem = $compile("<edit-nerd-item></edit-nerd-item>")(scope);
                   element.html(editNerdItem);
