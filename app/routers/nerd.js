@@ -1,6 +1,9 @@
 
 var Nerd = require('../models/nerd');
 var bleach = require('bleach');
+var multer = require('multer'),
+    path = require('path');
+var fs = require('fs');
 
 module.exports = function(express){
 	var nerd = express.Router();
@@ -70,6 +73,10 @@ module.exports = function(express){
 
     });
 
+    function deleteFile(file){
+        fs.unlink("." + file);
+    }
+
 	nerd.route('/:nerd_id')
 		.get(function(req, res){
 
@@ -77,7 +84,9 @@ module.exports = function(express){
 
 		})
 		.delete(function(req, res){
-
+            for(var i in req.nerd.photos){
+                deleteFile(req.nerd.photos[i]);
+            }
 			req.nerd.remove(function(err) {
 				if (err) {
 					res.status(500);
@@ -119,9 +128,6 @@ module.exports = function(express){
 
 		});
 
-
-	var multer = require('multer'),
-			path = require('path');
 
 	var storage = multer.diskStorage({
 		destination: function (req, file, cb) {
