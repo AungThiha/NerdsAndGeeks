@@ -51,7 +51,7 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
     "</div>\n" +
     "<small style=\"padding-top: 0; margin-top: 0\"><strong>created at: </strong>{{ nerd.createdAt | date:' HH:mma MMM d, yyyy'}}</small>\n" +
     "\n" +
-    "<ul class=\"photo\">\n" +
+    "<ul class=\"photo\" ng-show=\"nerd.photos.length\">\n" +
     "	<li ng-repeat=\"photo in nerd.photos\" class=\"photo\">\n" +
     "		<img src=\"{{photo}}\" alt=\"\">\n" +
     "	</li>\n" +
