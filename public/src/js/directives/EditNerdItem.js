@@ -18,7 +18,7 @@ angular.module('EditNerdItem', []).directive('editNerdItem', ['Nerd', '$compile'
 
             function back() {
                 var nerdItem = $compile("<nerd-item></nerd-item>")(scope);
-                element.html(nerdItem);
+                element.parent().html(nerdItem);
             }
 
             var progressList = element.find('.progress-list');
