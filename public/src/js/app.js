@@ -1,1 +1,1 @@
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'PanelCtrl', 'NerdService', 'NerdItem', 'EditNerdItem']);
+angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'PanelCtrl', 'NerdService', 'NerdItem', 'EditNerdItem', 'ngFileUpload']);
