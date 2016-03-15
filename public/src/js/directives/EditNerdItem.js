@@ -35,15 +35,12 @@ angular.module('EditNerdItem', []).directive('editNerdItem', ['Nerd', '$compile'
                     data: {photos: file}
                 }).then(function (photos) {
                     scope.nerd.photos.unshift(photos.data[0]);
+                    progressBar.parent().remove();
                 }, function (resp) {
                     progressBar.css("background-color", "#d9534f");
                 }, function (evt) {
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                    if(progressPercentage >= 100.0){
-                        progressBar.parent().remove();
-                    }else {
-                        progressBar.css("width", progressPercentage + "%");
-                    }
+                    progressBar.css("width", progressPercentage + "%");
                 });
             }
 
