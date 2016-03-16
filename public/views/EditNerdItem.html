@@ -2,7 +2,7 @@
 	<h4 style="color: #999;">Edit {{nerd.name}}</h4>
 
     <ul class="photo">
-        <li class="photo add" ngf-select="uploadPhotos($files)" multiple="multiple"><p><i class="fa fa-plus"></i></p></li>
+        <li class="photo add" ngf-drop="uploadPhotos($files)" ngf-select="uploadPhotos($files)" multiple="multiple"><p><i class="fa fa-plus"></i></p></li>
         <li ng-repeat="photo in nerd.editted.photos" class="photo">
             <i class="fa fa-times-circle-o close" ng-click="deletePhoto(photo)"></i>
             <img src="{{photo}}" alt="">

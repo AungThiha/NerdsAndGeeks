@@ -28,7 +28,7 @@ Nerd.isValidName = function(name){
 
 Nerd.isValidData = function(req){
 	var retval = {};
-	if (!req.body.hasOwnProperty('name') || !req.body.hasOwnProperty('age')) {
+	if (!Object.prototype.hasOwnProperty.call(req.body, 'name') || !Object.prototype.hasOwnProperty.call(req.body, 'age')) {
         retval = {
         	error: true,
         	status: 403,

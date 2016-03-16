@@ -7,11 +7,17 @@ angular.module('NerdService', []).factory('Nerd', ['$http', function($http) {
             return $http.get('/api/nerds');
         },
 
-
-                // these will work when more API routes are defined on the Node side of things
-        // call to POST and create a new nerd
         create : function(nerdData) {
-            return $http.post('/api/nerds', nerdData);
+            var config = {
+                method: 'POST',
+                url: '/api/nerds',
+                headers: {
+                    'Content-Type': undefined
+                },
+                transformRequest: angular.identity,
+                data: nerdData
+            };
+            return $http(config);
         },
 
         update: function(nerdId, nerdData){

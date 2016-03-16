@@ -10,7 +10,7 @@
 .new-container {
 	border: 1px solid #e7e9eB;
 	background-color: #f9f9fa;
-	margin: 0px 0px 15px;
+	margin: 0 0 15px;
 }
 
 .ng-invalid.ng-dirty {
@@ -38,7 +38,7 @@ ul.photo, ul.progress-list {
     padding: 0;
 }
 
-ul.photo {
+ul.photo, div.photo {
 	height: 180px;
 	width: 100%;
     margin-top: 10px;
@@ -48,7 +48,7 @@ ul.photo {
 	overflow-y: hidden;
 }
 
-li.photo
+li.photo, div.photo div
 {
 	position: relative;
 	margin: 18px 8px 8px;
@@ -63,7 +63,7 @@ li.photo
 	display: inline-block;
 }
 
-ul.photo .add:hover {
+ul.photo .add:hover, div.photo div:hover {
     box-shadow: 3px 3px 5px #bbb;
     cursor: pointer;
 }
@@ -73,7 +73,7 @@ ul.photo .add:hover {
 	height: 158px;
 }
 
-li.photo .close {
+li.photo .close, div.photo .close {
     position: absolute;
     font-size: 18px;
     top: -15px;

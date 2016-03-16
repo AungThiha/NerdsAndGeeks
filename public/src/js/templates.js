@@ -6,7 +6,7 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
     "	<h4 style=\"color: #999;\">Edit {{nerd.name}}</h4>\n" +
     "\n" +
     "    <ul class=\"photo\">\n" +
-    "        <li class=\"photo add\" ngf-select=\"uploadPhotos($files)\" multiple=\"multiple\"><p><i class=\"fa fa-plus\"></i></p></li>\n" +
+    "        <li class=\"photo add\" ngf-drop=\"uploadPhotos($files)\" ngf-select=\"uploadPhotos($files)\" multiple=\"multiple\"><p><i class=\"fa fa-plus\"></i></p></li>\n" +
     "        <li ng-repeat=\"photo in nerd.editted.photos\" class=\"photo\">\n" +
     "            <i class=\"fa fa-times-circle-o close\" ng-click=\"deletePhoto(photo)\"></i>\n" +
     "            <img src=\"{{photo}}\" alt=\"\">\n" +
@@ -172,6 +172,16 @@ angular.module('sampleApp').run(['$templateCache', function($templateCache) {
     "\n" +
     "			<fieldset class=\"form-group\">\n" +
     "				<textarea class=\"form-control\" placeholder=\"Address\" title=\"Address\" ng-model=\"nerd.address\"></textarea>\n" +
+    "			</fieldset>\n" +
+    "\n" +
+    "			<fieldset class=\"form-group\">\n" +
+    "				<div class=\"photo\">\n" +
+    "					<div>\n" +
+    "						<i class=\"fa fa-times-circle-o close\" ng-click=\"removePhoto()\" ng-show=\"preview\"></i>\n" +
+    "						<img src=\"{{preview}}\" alt=\"\" ng-show=\"preview\" ngf-drop=\"addPhoto($file)\" ngf-select=\"addPhoto($file)\">\n" +
+    "						<p ngf-drop=\"addPhoto($file)\" ngf-select=\"addPhoto($file)\"><i class=\"fa fa-plus\"></i></p>\n" +
+    "					</div>\n" +
+    "				</div>\n" +
     "			</fieldset>\n" +
     "\n" +
     "\n" +

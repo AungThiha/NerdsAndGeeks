@@ -32,6 +32,16 @@
 				<textarea class="form-control" placeholder="Address" title="Address" ng-model="nerd.address"></textarea>
 			</fieldset>
 
+			<fieldset class="form-group">
+				<div class="photo">
+					<div>
+						<i class="fa fa-times-circle-o close" ng-click="removePhoto()" ng-show="preview"></i>
+						<img src="{{preview}}" alt="" ng-show="preview" ngf-drop="addPhoto($file)" ngf-select="addPhoto($file)">
+						<p ngf-drop="addPhoto($file)" ngf-select="addPhoto($file)"><i class="fa fa-plus"></i></p>
+					</div>
+				</div>
+			</fieldset>
+
 
 			<fieldset class="form-group pull-right" style="padding-right: 12px">
 				<input class="btn btn-primary" value="Submit" type="submit" style="margin-right: 12px" />

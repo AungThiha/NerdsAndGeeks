@@ -7,6 +7,19 @@ var fs = require('fs');
 module.exports = function (express) {
     var nerd = express.Router();
 
+
+    var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, path.resolve('./uploads/'));
+        },
+        filename: function (req, file, cb) {
+            file.edittedName = Date.now() + file.originalname;
+            cb(null, file.edittedName);
+        }
+    });
+    var upload = multer({storage: storage});
+
+
     nerd.route('/')
         .get(function (req, res) {
 
@@ -19,7 +32,7 @@ module.exports = function (express) {
             });
 
         })
-        .post(function (req, res) {
+        .post(upload.single('photo'), function (req, res) {
 
             var isValidData = Nerd.isValidData(req);
             if (isValidData.hasOwnProperty('error')) {
@@ -33,11 +46,15 @@ module.exports = function (express) {
                 editable: true
             };
 
-            if (req.body.hasOwnProperty('address')) {
+            if(req.file){
+                nerd.photos = ["/uploads/" + req.file.edittedName];
+            }
+
+            if (Object.prototype.hasOwnProperty.call(req.body, 'address')) {
                 nerd.address = bleach.sanitize(req.body['address']);
             }
 
-            if (req.body.hasOwnProperty('bio')) {
+            if (Object.prototype.hasOwnProperty.call(req.body, 'bio')) {
                 nerd.bio = bleach.sanitize(req.body['bio']);
             }
 
@@ -74,25 +91,13 @@ module.exports = function (express) {
 
     function deleteFile(file) {
         var f = "." + file;
-        fs.stat(f, function(err, stat) {
-            if(!err) {
+        fs.stat(f, function (err, stat) {
+            if (!err) {
                 fs.unlink(f);
             }
         });
 
     }
-
-    var storage = multer.diskStorage({
-        destination: function (req, file, cb) {
-            cb(null, path.resolve('./uploads/'));
-        },
-        filename: function (req, file, cb) {
-            file.edittedName = Date.now() + file.originalname;
-            cb(null, file.edittedName);
-        }
-    });
-    var upload = multer({storage: storage});
-
 
     nerd.route('/:nerd_id/photos')
         .get(function (req, res) {
@@ -101,7 +106,7 @@ module.exports = function (express) {
 
         })
         .delete(function (req, res) {
-            console.log(req.body);
+
             if (req.body.hasOwnProperty('photos') && req.body.photos) {
 
                 var photos = req.body.photos;
